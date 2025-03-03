@@ -10,6 +10,7 @@ import { LoggerMiddleware } from './middlewares/logger.middleware';
   providers: [AppService, ConfigService],
 })
 export class AppModule implements NestModule {
+  // implements: 클래스가 특정 인터페이스를 구현하도록 강제하는 키워드
   configure(consumer: MiddlewareConsumer): any {
     consumer.apply(LoggerMiddleware).forRoutes('*');
   }
