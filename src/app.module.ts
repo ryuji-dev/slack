@@ -8,6 +8,7 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
 import { ChannelsModule } from './channels/channels.module';
 import { DmsModule } from './dms/dms.module';
 import { UsersService } from './users/users.service';
+import { PostsModule } from './posts/posts.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UsersService } from './users/users.service';
     WorkspacesModule,
     ChannelsModule,
     DmsModule,
+    PostsModule,
   ],
   controllers: [AppController],
   providers: [AppService, UsersService],
