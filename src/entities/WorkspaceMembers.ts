@@ -25,7 +25,7 @@ export class WorkspaceMembers {
   @Column('int', { primary: true, name: 'UserId' })
   UserId: number;
 
-  @Column('datetime', { name: 'loggedInAt', nullable: true })
+  @Column({ type: 'timestamp', nullable: true })
   loggedInAt: Date | null;
 
   @ManyToOne(() => Workspaces, (workspaces) => workspaces.WorkspaceMembers, {
