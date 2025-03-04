@@ -10,6 +10,13 @@ import { DmsModule } from './dms/dms.module';
 import { UsersService } from './users/users.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Users } from './entities/Users';
+import { Workspaces } from './entities/Workspaces';
+import { Channels } from './entities/Channels';
+import { ChannelMembers } from './entities/ChannelMembers';
+import { ChannelChats } from './entities/ChannelChats';
+import { DMs } from './entities/DMs';
+import { Mentions } from './entities/Mentions';
+import { WorkspaceMembers } from './entities/WorkspaceMembers';
 
 @Module({
   imports: [
@@ -25,7 +32,17 @@ import { Users } from './entities/Users';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [__dirname + '/entities/**'], // autoLoadEntities: true,
+      entities: [
+        Users,
+        Workspaces,
+        Channels,
+        ChannelMembers,
+        ChannelChats,
+        DMs,
+        Mentions,
+        WorkspaceMembers,
+      ],
+      // entities: [__dirname + '/entities/**'], // autoLoadEntities: true,
       synchronize: false,
       logging: true,
       // keepConnectionAlive: true,
