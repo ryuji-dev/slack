@@ -8,7 +8,8 @@ import { WorkspacesModule } from './workspaces/workspaces.module';
 import { ChannelsModule } from './channels/channels.module';
 import { DmsModule } from './dms/dms.module';
 import { UsersService } from './users/users.service';
-import { PostsModule } from './posts/posts.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { Users } from './entities/Users';
 
 @Module({
   imports: [
@@ -17,7 +18,20 @@ import { PostsModule } from './posts/posts.module';
     WorkspacesModule,
     ChannelsModule,
     DmsModule,
-    PostsModule,
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_DATABASE,
+      entities: [__dirname + '/entities/**'], // autoLoadEntities: true,
+      synchronize: false,
+      logging: true,
+      // keepConnectionAlive: true,
+      // charset: 'utf8mb4',
+    }),
+    TypeOrmModule.forFeature([Users]),
   ],
   controllers: [AppController],
   providers: [AppService, UsersService],

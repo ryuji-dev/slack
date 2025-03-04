@@ -18,6 +18,7 @@ import {
 } from '@nestjs/swagger';
 import { UserDto } from 'src/common/dto/user.dto';
 import { UndefinedToNullInterceptor } from 'src/common/interceptors/undefinedToNull.interceptor';
+import { User } from 'src/common/decorators/user.decorator';
 
 @UseInterceptors(UndefinedToNullInterceptor)
 @ApiTags('USER')
